@@ -16,16 +16,50 @@ $(".slide_group").slick({
     nextArrow: '<button class="next"><i class="fas fa-angle-right"></i></button>',
 })
 
-var $btn = $('.jq .jqb')
-var $i;
-var $slide = $('.jq .slide_group')
-$btn.on('click', function(){
-    $i = $(this).find('i')
-    if ($i.hasClass('fa-pause')) {
-        $slide.slick('slickPause')
-        $i.removeClass('fa-pause').addClass('fa-play')
+
+// 제이쿼리 문법
+// var $btn = $('.jq .jqb')
+// var $i;
+// var $slide = $('.jq .slide_group')
+// $btn.on('click', function(){
+//     $i = $(this).find('i')
+//     if ($i.hasClass('fa-pause')) {
+//         $slide.slick('slickPause')
+//         $i.removeClass('fa-pause').addClass('fa-play')
+//     } else {
+//         $slide.slick('slickPlay')
+//         $i.removeClass('fa-play').addClass('fa-pause')
+//     }
+// })
+
+//자바스크립트 문법-1
+var elBtn = document.querySelector('.jq .jqb')
+var elI = elBtn.childNodes
+elBtn.addEventListener('click', function(){
+    if (elI[0].classList.contains('fa-pause')) {
+        $('.jq .slide_group').slick('slickPause')
+        elI[0].classList.remove('fa-pause')
+        elI[0].classList.add('fa-play')
     } else {
-        $slide.slick('slickPlay')
-        $i.removeClass('fa-play').addClass('fa-pause')
+        $('.jq .slide_group').slick('slickPlay')
+        elI[0].classList.remove('fa-play')
+        elI[0].classList.add('fa-pause')
     }
 })
+
+//자바스크립트 문법-2(작동 안함)
+// var elBtn = document.querySelector('.jq .jqb')
+// var elI;
+// var elSlide = document.querySelector('jq .slide_group')
+// elBtn.addEventListener('click', function(){
+//     elI = elBtn.find('i')
+//     if (elI.classList.contains('fa-pause')) {
+//         elSlide.slick('slickPause')
+//         elI.classList.remove('fa-pause')
+//         elI.classList.add('fa-play')
+//     } else {
+//         elSlide.slick('slickPlay')
+//         elI.classList.remove('fa-play')
+//         elI.classList.add('fa-pause')
+//     }
+// })
